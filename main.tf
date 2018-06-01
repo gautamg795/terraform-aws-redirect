@@ -1,10 +1,11 @@
 module "certificate" {
   source  = "mediapop/certificate/aws"
-  version = "1.0.2"
+  version = "1.1.0"
   domains = "${var.domains}"
 }
 
 resource "aws_s3_bucket" "301" {
+  count = "${length(var.domains) > 0 ? 1 : 0}"
   bucket = "${local.bucket_name}"
 
   website {
@@ -13,6 +14,8 @@ resource "aws_s3_bucket" "301" {
 }
 
 resource "aws_cloudfront_distribution" "redirect" {
+  count = "${length(var.domains) > 0 ? 1 : 0}"
+
   comment = "Redirects to ${var.redirect_to}. Managed by terraform-aws-301-redirect."
 
   "origin" {
@@ -77,6 +80,6 @@ module "mediapopco-redirect-records" {
   version = "1.1"
 
   domains              = "${var.domains}"
-  alias_domain_name    = "${aws_cloudfront_distribution.redirect.domain_name}"
-  alias_hosted_zone_id = "${aws_cloudfront_distribution.redirect.hosted_zone_id}"
+  alias_domain_name    = "${element(concat(aws_cloudfront_distribution.redirect.*.domain_name, list("")), 0)}"
+  alias_hosted_zone_id = "${element(concat(aws_cloudfront_distribution.redirect.*.hosted_zone_id, list("")), 0)}"
 }
