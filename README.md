@@ -9,8 +9,8 @@ Set up a permanent redirect with HTTPS and IPv6 across a batch of domains.
 You can specify as many zones and records as you wish following this simple format:
 
 ```hcl
-module "terraform-redirect" {
-  source = "modules/terraform-aws-301-redirect"
+module "redirect" {
+  source = "mediapop/redirect/aws"
 
   domains = {
     "mediapop.co."     = ["www.mediapop.co"]
