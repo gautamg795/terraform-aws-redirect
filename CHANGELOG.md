@@ -1,3 +1,17 @@
+# 1.2.0
+
+FEATURES:
+
+* Always setup https redirects from `redirect_to`
+
+ENHANCEMENTS:
+
+* Use the bucket prefix to always generate a unique bucket.
+
+BUG FIXES:
+
+* Fix HTTPS failing to connect to the redirect bucket.
+
 # 1.1.0
 
 FEATURES:
