@@ -6,7 +6,7 @@ module "certificate" {
 
 resource "aws_s3_bucket" "301" {
   count = "${length(var.domains) > 0 ? 1 : 0}"
-  bucket = "${local.bucket_name}"
+  bucket_prefix = "${local.bucket_name}"
 
   website {
     redirect_all_requests_to = "${var.redirect_to}"
