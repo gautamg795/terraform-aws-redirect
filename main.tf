@@ -9,14 +9,14 @@ resource "aws_s3_bucket" "301" {
   bucket_prefix = "${local.bucket_name}"
 
   website {
-    redirect_all_requests_to = "${var.redirect_to}"
+    redirect_all_requests_to = "${local.redirect_to}"
   }
 }
 
 resource "aws_cloudfront_distribution" "redirect" {
   count = "${length(var.domains) > 0 ? 1 : 0}"
 
-  comment = "Redirects to ${var.redirect_to}. Managed by terraform-aws-301-redirect."
+  comment = "Redirects to ${local.redirect_to}. Managed by terraform-aws-301-redirect."
 
   "origin" {
     domain_name = "${aws_s3_bucket.301.website_endpoint}"
