@@ -23,7 +23,7 @@ resource "aws_cloudfront_distribution" "redirect" {
     origin_id   = "website"
 
     custom_origin_config {
-      origin_protocol_policy = "https-only"
+      origin_protocol_policy = "http-only"
       http_port              = "80"
       https_port             = "443"
 
@@ -58,7 +58,7 @@ resource "aws_cloudfront_distribution" "redirect" {
     }
 
     target_origin_id       = "website"
-    viewer_protocol_policy = "redirect-to-https"
+    viewer_protocol_policy = "allow-all"
     compress               = true
   }
 
