@@ -25,7 +25,7 @@ module "redirect" {
 
 | Name | Description | Type | Default | Required |
 |------|-------------|:----:|:-----:|:-----:|
-| domains | Map of records to redirect from. | map | - | yes |
+| domains | Map of records to redirect from, with the zones as the keys. | map | - | yes |
 | redirect_to | The target | string | - | yes |
 
 ## License
