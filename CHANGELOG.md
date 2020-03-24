@@ -1,3 +1,9 @@
+# 1.2.1
+
+BUG FIXES:
+
+* Truncate the bucket name to fit the S3 name limit.
+
 # 1.2.0
 
 FEATURES:
