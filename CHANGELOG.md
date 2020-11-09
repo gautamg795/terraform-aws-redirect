@@ -1,3 +1,10 @@
+# 1.3.0
+
+BREAKING:
+
+* Requires terraform >= 0.13
+* Updated mediapop/route53-alias/aws to 1.2.0 which will cause DNS records to be recreated.
+
 # 1.2.1
 
 BUG FIXES:
