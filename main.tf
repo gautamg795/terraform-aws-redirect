@@ -1,5 +1,5 @@
 module "certificate" {
-  source  = "https://github.com/gautamg795/terraform-aws-certificate"
+  source  = "github.com/gautamg795/terraform-aws-certificate"
   domains = var.domains
 }
 
