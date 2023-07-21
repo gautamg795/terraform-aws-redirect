@@ -1,6 +1,5 @@
 module "certificate" {
-  source  = "mediapop/certificate/aws"
-  version = ">= 1.2.0"
+  source  = "https://github.com/gautamg795/terraform-aws-certificate"
   domains = var.domains
 }
 
